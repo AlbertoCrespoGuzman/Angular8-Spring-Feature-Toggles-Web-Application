@@ -1,0 +1,50 @@
+<div class="card mt-4">
+    <h4 class="card-header">Feature Toggle</h4>
+    <div class="card-body">
+        <h6>Feature Toggles</h6>
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+        <form [formGroup]="featureForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="displayName">displayName</label>
+                <input type="text" formControlName="displayName" class="form-control" />
+                
+            </div>
+            <div class="form-group">
+                <label for="technicalName">technicalName</label>
+                <input type="text" formControlName="technicalName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.technicalName.errors }" />
+                <div *ngIf="submitted && f.technicalName.errors" class="invalid-feedback">
+                    <div *ngIf="f.technicalName.errors.required">technicalName is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="expiresOn">expiresOn</label>
+                <input type="text" formControlName="expiresOn" class="form-control"/>
+                
+            </div>
+            <div class="form-group">
+                <label for="description">description</label>
+                <input type="text" formControlName="description" class="form-control" />
+                
+            </div>
+            <div class="form-group">
+                <label for="inverted">inverted</label>
+                <input type="text" formControlName="inverted" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.inverted.errors }" />
+                <div *ngIf="submitted && f.inverted.errors" class="invalid-feedback">
+                    <div *ngIf="f.inverted.errors.required">inverted is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customerIds">customerIds</label>
+                <input type="text" formControlName="customerIds" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.customerIds.errors }" />
+                <div *ngIf="submitted && f.customerIds.errors" class="invalid-feedback">
+                    <div *ngIf="f.customerIds.errors.required">customerIds is required</div>
+                </div>
+            </div>
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Send
+            </button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿<div class="card mt-4">
+    <h4 class="card-header">Feature Toggle Web Application</h4>
+    <div class="card-body">
+        <h6>Feature Toggles</h6>
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+        <ul *ngIf="features">
+            <li *ngFor="let feature of features">{{feature.displayName}} | {{feature.technicalName}} | {{feature.expiresOn}} | {{feature.description}} | {{feature.inverted}} | {{feature.customersIds}}</li>
+        </ul>
+    </div>
+</div>
